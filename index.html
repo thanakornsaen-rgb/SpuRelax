@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SpuRelax - ระบบจองห้องพักผ่อน</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg sticky-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <i class="bi bi-cup-hot-fill me-2"></i>Spu<span>Relax</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-center gap-1">
+        <li class="nav-item"><a class="nav-link active" href="index.html"><i class="bi bi-house me-1"></i>หน้าแรก</a></li>
+        <li class="nav-item"><a class="nav-link" href="booking.html"><i class="bi bi-bookmark-plus me-1"></i>จองห้อง</a></li>
+        <li class="nav-item"><a class="nav-link" href="team.html"><i class="bi bi-people me-1"></i>ผู้จัดทำ</a></li>
+        <li class="nav-item ms-2">
+          <a class="btn btn-nav-cta" href="booking.html"><i class="bi bi-plus-circle me-1"></i>จองเลย</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-section">
+  <div class="hero-blob blob1"></div>
+  <div class="hero-blob blob2"></div>
+  <div class="container hero-content">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="hero-badge"><i class="bi bi-stars me-1"></i>ระบบจองห้องนั่งเล่น พักผ่อน สำหรับนักศึกษา</div>
+        <h1 class="hero-title">พักผ่อนให้เต็มที่<br/><span>จองง่าย รู้เวลา</span></h1>
+        <p class="hero-desc">ห้องพักผ่อนส่วนตัวสำหรับนักศึกษา 5 ห้อง จองได้ทันที ระบบจับเวลา 2 ชั่วโมง แจ้งเตือนอัตโนมัติเมื่อหมดเวลา</p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="booking.html" class="btn btn-primary-cta"><i class="bi bi-bookmark-plus me-2"></i>จองห้องเลย</a>
+        </div>
+        <div class="hero-stats mt-5">
+          <div class="stat-item">
+            <div class="stat-num">5</div>
+            <div class="stat-lbl">ห้องพักผ่อน</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-num">2 ชม.</div>
+            <div class="stat-lbl">ต่อการจอง</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-num">24/7</div>
+            <div class="stat-lbl">ออนไลน์</div>
+          </div>
+        </div>
+      </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-label">ฟีเจอร์หลัก</div>
+      <h2 class="section-title">ทำไมต้องใช้ <span>SpuRelax</span>?</h2>
+      <p class="section-desc">ระบบที่ออกแบบมาเพื่อนักศึกษาโดยเฉพาะ ใช้งานง่าย รวดเร็ว และมีประสิทธิภาพ</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-6 fade-in-up">
+        <div class="feat-card">
+          <div class="feat-icon blue"><i class="bi bi-lightning-charge-fill"></i></div>
+          <div class="feat-title">จองได้ทันที</div>
+          <div class="feat-desc">เลือกห้องที่ว่าง กรอกชื่อ กดยืนยัน เสร็จใน 2 ขั้นตอน ไม่ต้องรอคิว</div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6 fade-in-up" style="transition-delay:0.1s">
+        <div class="feat-card">
+          <div class="feat-icon amber"><i class="bi bi-alarm-fill"></i></div>
+          <div class="feat-title">จับเวลา 2 ชั่วโมง</div>
+          <div class="feat-desc">ระบบนับถอยหลังอัตโนมัติ แจ้งเตือนเมื่อเหลือ 15 นาที และเมื่อหมดเวลา</div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6 fade-in-up" style="transition-delay:0.3s">
+        <div class="feat-card">
+          <div class="feat-icon red"><i class="bi bi-bell-fill"></i></div>
+          <div class="feat-title">แจ้งเตือนอัตโนมัติ</div>
+          <div class="feat-desc">รับการแจ้งเตือนเมื่อใกล้หมดเวลาใช้ห้อง เพื่อเตรียมพร้อมออกจากห้อง</div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6 fade-in-up" style="transition-delay:0.5s">
+        <div class="feat-card">
+          <div class="feat-icon sky"><i class="bi bi-phone-fill"></i></div>
+          <div class="feat-title">รองรับทุกอุปกรณ์</div>
+          <div class="feat-desc">ใช้งานได้บนมือถือ แท็บเล็ต และคอมพิวเตอร์ ทุกที่ทุกเวลา</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOMS PREVIEW -->
+<section id="rooms-preview">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-label">ห้องพักผ่อน</div>
+      <h2 class="section-title">5 ห้องพักผ่อน<span> สำหรับนักศึกษา</span></h2>
+      <p class="section-desc">ห้องนั่งเล่นส่วนตัว บรรยากาศผ่อนคลาย พร้อมสิ่งอำนวยความสะดวกครบครัน</p>
+    </div>
+    <div class="row g-4">
+      <!-- Room 1 -->
+      <div class="col-md-6 col-lg-4 fade-in-up">
+        <div class="room-card">
+          <div class="room-card-top">
+            <div class="room-num">1</div>
+            <div class="room-icon-big">🛋️</div>
+            <div class="room-name">ห้อง Spu 1</div>
+            <div class="room-cap"><i class="bi bi-people me-1"></i>รองรับ 8 คน</div>
+          </div>
+          <div class="room-card-body">
+            <div class="room-amenity"><i class="bi bi-wifi"></i>WiFi ความเร็วสูง</div>
+            <div class="room-amenity"><i class="bi bi-snow2"></i>เครื่องปรับอากาศ</div>
+            <div class="room-amenity"><i class="bi bi-tv"></i>โทรทัศน์</div>
+            <div class="room-amenity"><i class="bi bi-outlet"></i>ปลั๊กไฟ USB</div>
+            <a href="booking.html" class="btn-book-room">จองห้องนี้ <i class="bi bi-arrow-right ms-1"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Room 2 -->
+      <div class="col-md-6 col-lg-4 fade-in-up" style="transition-delay:0.1s">
+        <div class="room-card">
+          <div class="room-card-top">
+            <div class="room-num">2</div>
+            <div class="room-icon-big">☕</div>
+            <div class="room-name">ห้อง Spu 2</div>
+            <div class="room-cap"><i class="bi bi-people me-1"></i>รองรับ 8 คน</div>
+          </div>
+          <div class="room-card-body">
+            <div class="room-amenity"><i class="bi bi-wifi"></i>WiFi ความเร็วสูง</div>
+            <div class="room-amenity"><i class="bi bi-snow2"></i>เครื่องปรับอากาศ</div>
+            <div class="room-amenity"><i class="bi bi-music-note-beamed"></i>เครื่องเสียง</div>
+            <div class="room-amenity"><i class="bi bi-outlet"></i>ปลั๊กไฟ USB</div>
+            <a href="booking.html" class="btn-book-room">จองห้องนี้ <i class="bi bi-arrow-right ms-1"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Room 3 -->
+      <div class="col-md-6 col-lg-4 fade-in-up" style="transition-delay:0.2s">
+        <div class="room-card">
+          <div class="room-card-top">
+            <div class="room-num">3</div>
+            <div class="room-icon-big">🌿</div>
+            <div class="room-name">ห้อง Spu 3</div>
+            <div class="room-cap"><i class="bi bi-people me-1"></i>รองรับ 8 คน</div>
+          </div>
+          <div class="room-card-body">
+            <div class="room-amenity"><i class="bi bi-wifi"></i>WiFi ความเร็วสูง</div>
+            <div class="room-amenity"><i class="bi bi-snow2"></i>เครื่องปรับอากาศ</div>
+            <div class="room-amenity"><i class="bi bi-tree"></i>พื้นที่สีเขียว</div>
+            <div class="room-amenity"><i class="bi bi-outlet"></i>ปลั๊กไฟ USB</div>
+            <a href="booking.html" class="btn-book-room">จองห้องนี้ <i class="bi bi-arrow-right ms-1"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Room 4 -->
+      <div class="col-md-6 col-lg-6 fade-in-up" style="transition-delay:0.3s">
+        <div class="room-card">
+          <div class="room-card-top">
+            <div class="room-num">4</div>
+            <div class="room-icon-big">🎵</div>
+            <div class="room-name">ห้อง Spu 4</div>
+            <div class="room-cap"><i class="bi bi-people me-1"></i>รองรับ 8 คน</div>
+          </div>
+          <div class="room-card-body">
+            <div class="room-amenity"><i class="bi bi-wifi"></i>WiFi ความเร็วสูง</div>
+            <div class="room-amenity"><i class="bi bi-snow2"></i>เครื่องปรับอากาศ</div>
+            <div class="room-amenity"><i class="bi bi-headphones"></i>โซน Quiet Zone</div>
+            <div class="room-amenity"><i class="bi bi-outlet"></i>ปลั๊กไฟ USB</div>
+            <a href="booking.html" class="btn-book-room">จองห้องนี้ <i class="bi bi-arrow-right ms-1"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Room 5 -->
+      <div class="col-md-6 col-lg-6 fade-in-up" style="transition-delay:0.4s">
+        <div class="room-card">
+          <div class="room-card-top">
+            <div class="room-num">5</div>
+            <div class="room-icon-big">🌙</div>
+            <div class="room-name">ห้อง Spu 5</div>
+            <div class="room-cap"><i class="bi bi-people me-1"></i>รองรับ 8 คน</div>
+          </div>
+          <div class="room-card-body">
+            <div class="room-amenity"><i class="bi bi-wifi"></i>WiFi ความเร็วสูง</div>
+            <div class="room-amenity"><i class="bi bi-snow2"></i>เครื่องปรับอากาศ</div>
+            <div class="room-amenity"><i class="bi bi-star"></i>ห้องขนาดใหญ่</div>
+            <div class="room-amenity"><i class="bi bi-outlet"></i>ปลั๊กไฟ USB</div>
+            <a href="booking.html" class="btn-book-room">จองห้องนี้ <i class="bi bi-arrow-right ms-1"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5">
+      <a href="booking.html" class="btn btn-primary-cta" style="background:var(--primary);box-shadow:0 8px 28px rgba(26,79,160,0.3);">
+        <i class="bi bi-bookmark-plus me-2"></i>จองห้องพักผ่อน
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-label">วิธีใช้งาน</div>
+      <h2 class="section-title">จองห้องง่ายใน <span>2 ขั้นตอน</span></h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 fade-in-up" style="transition-delay:0.15s">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <i class="bi bi-pencil-square" style="font-size:2rem;color:var(--primary);margin-bottom:14px;display:block;"></i>
+          <div class="step-title">กรอกข้อมูลการจอง</div>
+          <div class="step-desc">เลือกห้อง กรอกชื่อ-สกุล รหัสนักศึกษา และยืนยันการจอง ใช้เวลาไม่ถึง 1 นาที</div>
+        </div>
+      </div>
+      <div class="col-md-6 fade-in-up" style="transition-delay:0.3s">
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <i class="bi bi-alarm" style="font-size:2rem;color:var(--primary);margin-bottom:14px;display:block;"></i>
+          <div class="step-title">เพลิดเพลิน 2 ชั่วโมง</div>
+          <div class="step-desc">ระบบจับเวลาให้อัตโนมัติ แจ้งเตือนเมื่อใกล้หมดเวลา เพื่อให้ผู้อื่นได้ใช้บ้าง</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="footer-brand"><i class="bi bi-cup-hot-fill me-2"></i>Spu<span>Relax</span></div>
+        <div class="footer-desc">ระบบจองห้องนั่งเล่นพักผ่อนสำหรับนักศึกษา</div>
+      </div>
+      <div class="col-md-2">
+        <div class="footer-title">เมนู</div>
+        <a href="index.html" class="footer-link">หน้าแรก</a>
+        <a href="booking.html" class="footer-link">จองห้อง</a>
+        <a href="team.html" class="footer-link">ผู้จัดทำ</a>
+      </div>
+      <div class="col-md-3">
+        <div class="footer-title">ห้องพักผ่อน</div>
+        <a href="booking.html" class="footer-link">🛋️ ห้อง Spu 1</a>
+        <a href="booking.html" class="footer-link">☕ ห้อง Spu 2</a>
+        <a href="booking.html" class="footer-link">🌿 ห้อง Spu 3</a>
+        <a href="booking.html" class="footer-link">🎵 ห้อง Spu 4</a>
+        <a href="booking.html" class="footer-link">🌙 ห้อง Spu 5</a>
+      </div>
+      <div class="col-md-3">
+        <div class="footer-title">ข้อมูล</div>
+        <div class="footer-link">⏱ เวลาใช้ห้อง: 2 ชั่วโมง/ครั้ง</div>
+        <div class="footer-link">🔔 แจ้งเตือนก่อนหมดเวลา 15 นาที</div>
+        <div class="footer-link">📱 รองรับมือถือ/แท็บเล็ต</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 SpuRelax — ระบบจองห้องพักผ่อน | จัดทำเพื่อการศึกษา
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Fade in on scroll
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in-up').forEach(el => obs.observe(el));
+
+  // Hero timer animation
+  let heroSec = 5025;
+  setInterval(() => {
+    heroSec--;
+    const h = Math.floor(heroSec/3600);
+    const m = Math.floor((heroSec%3600)/60);
+    const s = heroSec%60;
+    const el = document.getElementById('heroTimer');
+    if (el) el.textContent = `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    if (heroSec <= 0) heroSec = 7200;
+  }, 1000);
+</script>
+</body>
+</html>

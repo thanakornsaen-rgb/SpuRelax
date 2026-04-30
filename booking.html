@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>จองห้อง - SpuRelax</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg sticky-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><i class="bi bi-cup-hot-fill me-2"></i>Spu<span>Relax</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-center gap-1">
+        <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house me-1"></i>หน้าแรก</a></li>
+        <li class="nav-item"><a class="nav-link active" href="booking.html"><i class="bi bi-bookmark-plus me-1"></i>จองห้อง</a></li>
+        <li class="nav-item"><a class="nav-link" href="team.html"><i class="bi bi-people me-1"></i>ผู้จัดทำ</a></li>
+        <li class="nav-item ms-2"><a class="btn btn-nav-cta" href="booking.html"><i class="bi bi-plus-circle me-1"></i>จองเลย</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container" style="position:relative;z-index:2;">
+    <nav aria-label="breadcrumb" class="mb-3">
+      <ol class="breadcrumb" style="font-size:0.88rem;">
+        <li class="breadcrumb-item"><a href="index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;">หน้าแรก</a></li>
+        <li class="breadcrumb-item active" style="color:rgba(255,255,255,0.9);">จองห้อง</li>
+      </ol>
+    </nav>
+    <h1 class="page-hero-title"><i class="bi bi-bookmark-plus me-3"></i>จองห้องพักผ่อน</h1>
+    <p class="page-hero-sub">เลือกห้องที่ว่าง กรอกข้อมูล แล้วจองได้เลย · ใช้ห้องได้สูงสุด 2 ชั่วโมง</p>
+  </div>
+</section>
+
+<div class="booking-section">
+  <div class="container">
+    <div class="row g-4">
+
+      <!-- BOOKING FORM -->
+      <div class="col-lg-7">
+        <div class="booking-form-card">
+          <h4 class="mb-1" style="font-weight:800;color:var(--primary);">📋 ฟอร์มจองห้อง</h4>
+          <p class="mb-4" style="color:var(--muted);font-size:0.93rem;">กรอกข้อมูลให้ครบถ้วน แล้วกดยืนยันการจอง</p>
+
+          <!-- Step 1: Room Select -->
+          <div class="mb-4">
+            <div class="form-label mb-2"><i class="bi bi-door-open me-2 text-primary"></i>เลือกห้องพักผ่อน <span class="text-danger">*</span></div>
+            <div class="room-select-grid" id="roomGrid">
+              <!-- injected by JS -->
+            </div>
+            <div id="roomSelectError" class="text-danger" style="font-size:0.85rem;display:none;margin-top:4px;"><i class="bi bi-exclamation-circle me-1"></i>กรุณาเลือกห้อง</div>
+          </div>
+
+          <!-- Step 2: Personal Info -->
+          <div class="row g-3 mb-4">
+            <div class="col-sm-6">
+              <label class="form-label"><i class="bi bi-person me-2 text-primary"></i>ชื่อ-สกุล <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="inputName" placeholder="เช่น นายสมชาย ใจดี"/>
+            </div>
+            <div class="col-sm-6">
+              <label class="form-label"><i class="bi bi-card-text me-2 text-primary"></i>รหัสนักศึกษา <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="inputStudentId" placeholder="เช่น 65XXXXXXXX"/>
+            </div>
+            <div class="col-sm-6">
+              <label class="form-label"><i class="bi bi-telephone me-2 text-primary"></i>เบอร์โทรศัพท์</label>
+              <input type="tel" class="form-control" id="inputPhone" placeholder="เช่น 08XXXXXXXX"/>
+            </div>
+            <div class="col-sm-6">
+              <label class="form-label"><i class="bi bi-people me-2 text-primary"></i>จำนวนผู้ใช้งาน <span class="text-danger">*</span></label>
+              <select class="form-select" id="inputCount">
+                <option value="">-- เลือก --</option>
+                <option value="1">1 คน</option>
+                <option value="2">2 คน</option>
+                <option value="3">3 คน</option>
+                <option value="4">4 คน</option>
+                <option value="5">5 คน</option>
+                <option value="6">6 คน</option>
+                <option value="7">7 คน</option>
+                <option value="8">8 คน</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="form-label"><i class="bi bi-chat-text me-2 text-primary"></i>หมายเหตุ (ถ้ามี)</label>
+              <textarea class="form-control" id="inputNote" rows="2" placeholder="เช่น ใช้เพื่อทำงานกลุ่ม..."></textarea>
+            </div>
+          </div>
+
+          <!-- Info box -->
+          <div class="alert" style="background:#dbeafe;border:1.5px solid #bfdbfe;border-radius:12px;color:var(--primary);font-size:0.92rem;">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            <strong>ข้อตกลงการใช้ห้อง:</strong> ใช้ห้องได้สูงสุด <strong>2 ชั่วโมง</strong> ต่อครั้ง ระบบจะแจ้งเตือนเมื่อเหลือ 15 นาที และเมื่อหมดเวลากรุณาออกจากห้องทันที
+          </div>
+
+          <button class="btn btn-submit-book mt-2" id="btnBook">
+            <i class="bi bi-bookmark-check me-2"></i>ยืนยันการจอง
+          </button>
+        </div>
+      </div>
+
+      <!-- ACTIVE BOOKINGS SIDEBAR -->
+      <div class="col-lg-5">
+        <div class="booking-form-card" style="padding:28px 24px;">
+          <h5 class="mb-1" style="font-weight:800;color:var(--primary);">⏱ การจองที่กำลังใช้งาน</h5>
+          <p class="mb-3" style="color:var(--muted);font-size:0.88rem;">ห้องที่กำลังถูกใช้งานและเวลาที่เหลือ</p>
+          <div id="activeBookingsList">
+            <div class="empty-state">
+              <i class="bi bi-door-closed"></i>
+              <p>ยังไม่มีการจองที่กำลังใช้งาน</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick status -->
+        <div class="booking-form-card mt-4" style="padding:24px;">
+          <h6 class="mb-3" style="font-weight:700;color:var(--primary);">🚦 สถานะห้องตอนนี้</h6>
+          <div id="roomStatusList"><!-- injected --></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM MODAL -->
+<div class="modal fade" id="confirmModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header-custom">
+        <span class="modal-title"><i class="bi bi-bookmark-check me-2"></i>ยืนยันการจอง</span>
+        <button class="btn-close-white" onclick="document.getElementById('confirmModal').querySelector('[data-bs-dismiss]').click()">✕</button>
+      </div>
+      <div class="modal-body-custom">
+        <div class="text-center mb-4">
+          <div style="font-size:3.5rem;margin-bottom:8px;" id="confirmRoomEmoji">🛋️</div>
+          <div class="confirm-room-name" id="confirmRoomName">ห้อง Spu 1</div>
+        </div>
+        <div class="confirm-detail-row"><i class="bi bi-person-fill"></i><span><strong id="confirmName">-</strong></span></div>
+        <div class="confirm-detail-row"><i class="bi bi-card-text"></i><span>รหัส <strong id="confirmId">-</strong></span></div>
+        <div class="confirm-detail-row"><i class="bi bi-people-fill"></i><span><strong id="confirmCount">-</strong> คน</span></div>
+        <div class="confirm-detail-row"><i class="bi bi-clock-fill"></i><span>ใช้งาน <strong>2 ชั่วโมง</strong> เริ่มทันที</span></div>
+        <div class="confirm-detail-row"><i class="bi bi-bell-fill"></i><span>แจ้งเตือนเมื่อเหลือ <strong>15 นาที</strong></span></div>
+        <button class="btn-confirm-ok" id="btnConfirmOk"><i class="bi bi-check-lg me-2"></i>ยืนยัน จองห้องนี้เลย!</button>
+        <button class="btn btn-outline-secondary w-100 mt-2" style="border-radius:50px;" data-bs-dismiss="modal">ยกเลิก</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPIRED MODAL -->
+<div class="modal fade" id="expiredModal" tabindex="-1" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header-custom" style="background:linear-gradient(135deg,#dc2626,#ef4444);">
+        <span class="modal-title"><i class="bi bi-alarm-fill me-2"></i>หมดเวลาใช้ห้อง!</span>
+      </div>
+      <div class="modal-body-custom text-center">
+        <div style="font-size:4rem;margin-bottom:12px;">⏰</div>
+        <h4 style="font-weight:800;color:#dc2626;font-family:'Prompt',sans-serif;margin-bottom:8px;">หมดเวลา 2 ชั่วโมงแล้ว</h4>
+        <div style="font-size:2.5rem;margin-bottom:8px;" id="expiredRoomEmoji">🛋️</div>
+        <p style="color:var(--text);font-size:1.05rem;" id="expiredRoomName">ห้อง Spu 1</p>
+        <p style="color:var(--muted);font-size:0.93rem;margin-bottom:24px;">กรุณาออกจากห้องและเก็บสิ่งของให้เรียบร้อย เพื่อให้ผู้อื่นได้ใช้ห้องต่อไป 🙏</p>
+        <button class="btn-confirm-ok" style="background:linear-gradient(135deg,#dc2626,#ef4444);" id="btnExpiredOk">
+          <i class="bi bi-box-arrow-right me-2"></i>รับทราบ ออกจากห้องแล้ว
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-wrap" id="toastWrap"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="footer-brand"><i class="bi bi-cup-hot-fill me-2"></i>Spu<span>Relax</span></div>
+        <div class="footer-desc">ระบบจองห้องนั่งเล่นพักผ่อนสำหรับนักศึกษา</div>
+      </div>
+      <div class="col-md-4">
+        <div class="footer-title">เมนู</div>
+        <a href="index.html" class="footer-link">หน้าแรก</a>
+        <a href="booking.html" class="footer-link">จองห้อง</a>
+        <a href="team.html" class="footer-link">ผู้จัดทำ</a>
+      </div>
+      <div class="col-md-4">
+        <div class="footer-title">กฎการใช้ห้อง</div>
+        <div class="footer-link">⏱ ใช้ได้สูงสุด 2 ชั่วโมง/ครั้ง</div>
+        <div class="footer-link">🔔 แจ้งเตือนก่อนหมด 15 นาที</div>
+        <div class="footer-link">🙏 รักษาความสะอาดและความเงียบ</div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 SpuRelax — ระบบจองห้องพักผ่อน | จัดทำเพื่อการศึกษา</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ===== ROOM DATA =====
+const ROOMS = [
+  { id:'1', name:'ห้อง Spu 1',  emoji:'🛋️', cap:8 },
+  { id:'2', name:'ห้อง Spu 2',  emoji:'☕', cap:8 },
+  { id:'3', name:'ห้อง Spu 3',  emoji:'🌿', cap:8 },
+  { id:'4', name:'ห้อง Spu 4',  emoji:'🎵', cap:8 },
+  { id:'5', name:'ห้อง Spu 5',  emoji:'🌙', cap:8 },
+];
+const DURATION = 2 * 60 * 60; // 2 hours in seconds
+const WARN_AT  = 15 * 60;     // warn at 15 min left
+
+// ===== STATE =====
+let bookings = JSON.parse(localStorage.getItem('roomrelax_bookings') || '[]');
+let selectedRoom = null;
+let expiredModalShown = {};
+let notified15 = {};
+
+// ===== RENDER =====
+function saveBookings() { localStorage.setItem('roomrelax_bookings', JSON.stringify(bookings)); }
+
+function isOccupied(roomId) {
+  const now = Date.now();
+  return bookings.some(b => b.roomId === roomId && now < b.endTime);
+}
+
+function renderRoomGrid() {
+  const grid = document.getElementById('roomGrid');
+  grid.innerHTML = ROOMS.map(r => {
+    const occ = isOccupied(r.id);
+    return `
+    <div class="room-option ${occ ? 'occupied-opt' : ''} ${selectedRoom===r.id ? 'selected-opt' : ''}"
+         onclick="${occ ? '' : `selectRoom('${r.id}')`}" data-room="${r.id}">
+      <i class="bi bi-check-circle-fill check-opt"></i>
+      <div class="room-opt-icon">${r.emoji}</div>
+      <div class="room-opt-name">${r.name}</div>
+      <div class="room-opt-cap">รองรับ ${r.cap} คน</div>
+      <span class="room-opt-badge ${occ ? 'occ':'avail'}">${occ ? 'ถูกจอง':'ว่าง'}</span>
+    </div>`;
+  }).join('');
+}
+
+function selectRoom(id) {
+  selectedRoom = id;
+  renderRoomGrid();
+  document.getElementById('roomSelectError').style.display = 'none';
+}
+
+function renderRoomStatus() {
+  const list = document.getElementById('roomStatusList');
+  if (!list) return;
+  list.innerHTML = ROOMS.map(r => {
+    const occ = isOccupied(r.id);
+    return `
+    <div class="d-flex align-items-center gap-2 mb-2">
+      <span style="font-size:1.2rem;">${r.emoji}</span>
+      <span style="flex:1;font-size:0.93rem;font-weight:600;">${r.name}</span>
+      <span class="badge-room-status ${occ ? 'occupied':'available'}" style="position:static;font-size:0.78rem;">
+        ${occ ? '● ถูกจอง' : '● ว่าง'}
+      </span>
+    </div>`;
+  }).join('');
+}
+
+// Timer ring
+function calcRingOffset(secondsLeft) {
+  const pct = secondsLeft / DURATION;
+  const circ = 201;
+  return circ - (pct * circ);
+}
+
+function formatTime(sec) {
+  const h = Math.floor(sec / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  const s = sec % 60;
+  if (h > 0) return `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+function renderActiveBookings() {
+  const now = Date.now();
+  const active = bookings.filter(b => now < b.endTime);
+  const list = document.getElementById('activeBookingsList');
+  if (!list) return;
+  if (active.length === 0) {
+    list.innerHTML = `<div class="empty-state"><i class="bi bi-door-closed"></i><p>ยังไม่มีการจองที่กำลังใช้งาน</p></div>`;
+    return;
+  }
+  list.innerHTML = active.map(b => {
+    const secLeft = Math.max(0, Math.floor((b.endTime - now) / 1000));
+    const ringOffset = calcRingOffset(secLeft);
+    const isWarning = secLeft <= WARN_AT && secLeft > 0;
+    const isDanger  = secLeft <= 5 * 60;
+    const ringClass = isDanger ? 'danger' : isWarning ? 'warning' : '';
+    const room = ROOMS.find(r => r.id === b.roomId);
+    const startStr = new Date(b.startTime).toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'});
+    const endStr   = new Date(b.endTime).toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'});
+    return `
+    <div class="active-booking-card mb-3 ${isWarning ? 'expiring':''}" id="bcard-${b.id}">
+      <div class="timer-ring-wrap" id="ring-${b.id}">
+        <svg width="72" height="72" viewBox="0 0 72 72">
+          <circle class="timer-ring-bg" cx="36" cy="36" r="32"/>
+          <circle class="timer-ring-fill ${ringClass}" cx="36" cy="36" r="32"
+                  stroke-dashoffset="${ringOffset}" id="ringFill-${b.id}"/>
+        </svg>
+        <div class="timer-text">
+          <div class="t-time" id="ttime-${b.id}">${formatTime(secLeft)}</div>
+          <div class="t-label">เหลือ</div>
+        </div>
+      </div>
+      <div class="booking-info">
+        <div class="booking-room-name">${room.emoji} ${room.name}</div>
+        <div class="booking-user-name"><i class="bi bi-person me-1"></i>${b.name} · ${b.studentId}</div>
+        <div class="booking-time-range"><i class="bi bi-clock me-1"></i>${startStr} – ${endStr}</div>
+      </div>
+      <button class="btn-cancel-booking" onclick="cancelBooking('${b.id}')">
+        <i class="bi bi-x-circle me-1"></i>ยกเลิก
+      </button>
+    </div>`;
+  }).join('');
+}
+
+function cancelBooking(id) {
+  if (!confirm('ยืนยันการยกเลิกการจองนี้?')) return;
+  bookings = bookings.filter(b => b.id !== id);
+  saveBookings();
+  renderRoomGrid();
+  renderRoomStatus();
+  renderActiveBookings();
+  showToast('ยกเลิกการจองแล้ว', 'ห้องพร้อมให้จองใหม่', 'bi-x-circle-fill', 'toast-warning');
+}
+
+// ===== TICK =====
+function tick() {
+  const now = Date.now();
+  bookings.forEach(b => {
+    const secLeft = Math.max(0, Math.floor((b.endTime - now) / 1000));
+    const el = document.getElementById(`ttime-${b.id}`);
+    const fill = document.getElementById(`ringFill-${b.id}`);
+    const card = document.getElementById(`bcard-${b.id}`);
+    if (el) el.textContent = formatTime(secLeft);
+    if (fill) {
+      fill.style.strokeDashoffset = calcRingOffset(secLeft);
+      fill.className = `timer-ring-fill ${secLeft <= 5*60 ? 'danger' : secLeft <= WARN_AT ? 'warning' : ''}`;
+    }
+    if (card) {
+      card.classList.toggle('expiring', secLeft <= WARN_AT && secLeft > 0);
+    }
+    // 15-min warning
+    if (secLeft <= WARN_AT && secLeft > WARN_AT - 5 && !notified15[b.id]) {
+      notified15[b.id] = true;
+      const room = ROOMS.find(r => r.id === b.roomId);
+      showToast(`⚠️ เหลือเวลา 15 นาที!`, `${room.emoji} ${room.name} — ${b.name} กรุณาเตรียมออกจากห้อง`, 'bi-alarm-fill', 'toast-warning');
+    }
+    // expired
+    if (secLeft === 0 && !expiredModalShown[b.id]) {
+      expiredModalShown[b.id] = true;
+      const room = ROOMS.find(r => r.id === b.roomId);
+      document.getElementById('expiredRoomEmoji').textContent = room.emoji;
+      document.getElementById('expiredRoomName').textContent = room.name;
+      document.getElementById('btnExpiredOk').onclick = () => {
+        bookings = bookings.filter(bk => bk.id !== b.id);
+        saveBookings(); renderAll();
+        bootstrap.Modal.getInstance(document.getElementById('expiredModal'))?.hide();
+      };
+      new bootstrap.Modal(document.getElementById('expiredModal')).show();
+    }
+  });
+  // clean expired
+  const before = bookings.length;
+  bookings = bookings.filter(b => Date.now() < b.endTime || expiredModalShown[b.id]);
+}
+
+function renderAll() {
+  renderRoomGrid();
+  renderRoomStatus();
+  renderActiveBookings();
+}
+
+// ===== BOOK FORM =====
+document.getElementById('btnBook').addEventListener('click', () => {
+  const name = document.getElementById('inputName').value.trim();
+  const sid  = document.getElementById('inputStudentId').value.trim();
+  const count = document.getElementById('inputCount').value;
+  let valid = true;
+  if (!selectedRoom) { document.getElementById('roomSelectError').style.display='block'; valid=false; }
+  if (!name) { document.getElementById('inputName').classList.add('is-invalid'); valid=false; }
+  else document.getElementById('inputName').classList.remove('is-invalid');
+  if (!sid) { document.getElementById('inputStudentId').classList.add('is-invalid'); valid=false; }
+  else document.getElementById('inputStudentId').classList.remove('is-invalid');
+  if (!count) { document.getElementById('inputCount').classList.add('is-invalid'); valid=false; }
+  else document.getElementById('inputCount').classList.remove('is-invalid');
+  if (!valid) return;
+
+  const room = ROOMS.find(r => r.id === selectedRoom);
+  document.getElementById('confirmRoomEmoji').textContent = room.emoji;
+  document.getElementById('confirmRoomName').textContent  = room.name;
+  document.getElementById('confirmName').textContent  = name;
+  document.getElementById('confirmId').textContent    = sid;
+  document.getElementById('confirmCount').textContent = count;
+  new bootstrap.Modal(document.getElementById('confirmModal')).show();
+});
+
+document.getElementById('btnConfirmOk').addEventListener('click', () => {
+  const name  = document.getElementById('inputName').value.trim();
+  const sid   = document.getElementById('inputStudentId').value.trim();
+  const phone = document.getElementById('inputPhone').value.trim();
+  const count = document.getElementById('inputCount').value;
+  const note  = document.getElementById('inputNote').value.trim();
+  const now = Date.now();
+  const booking = {
+    id: 'bk_' + Date.now(),
+    roomId: selectedRoom,
+    name, studentId: sid, phone, count, note,
+    startTime: now,
+    endTime: now + DURATION * 1000
+  };
+  bookings.push(booking);
+  saveBookings();
+
+  bootstrap.Modal.getInstance(document.getElementById('confirmModal'))?.hide();
+  document.getElementById('inputName').value = '';
+  document.getElementById('inputStudentId').value = '';
+  document.getElementById('inputPhone').value = '';
+  document.getElementById('inputCount').value = '';
+  document.getElementById('inputNote').value = '';
+  selectedRoom = null;
+  renderAll();
+
+  const room = ROOMS.find(r => r.id === booking.roomId);
+  showToast('จองสำเร็จ! 🎉', `${room.emoji} ${room.name} — เวลา 2 ชั่วโมง เริ่มนับแล้ว`, 'bi-check-circle-fill', 'toast-success');
+});
+
+// ===== TOAST =====
+function showToast(title, msg, icon, cls='') {
+  const wrap = document.getElementById('toastWrap');
+  const t = document.createElement('div');
+  t.className = `my-toast ${cls}`;
+  t.innerHTML = `
+    <i class="bi ${icon} toast-icon" style="color:${cls.includes('success')?'var(--accent2)':cls.includes('warning')?'var(--accent)':cls.includes('danger')?'var(--danger)':'var(--primary)'}"></i>
+    <div><div class="toast-title">${title}</div><div class="toast-msg">${msg}</div></div>`;
+  wrap.appendChild(t);
+  setTimeout(() => { t.style.opacity='0'; t.style.transform='translateX(40px)'; t.style.transition='all 0.4s'; setTimeout(()=>t.remove(),400); }, 5000);
+}
+
+// ===== INIT =====
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40);
+});
+renderAll();
+setInterval(() => { tick(); renderActiveBookings(); renderRoomStatus(); renderRoomGrid(); }, 1000);
+</script>
+</body>
+</html>
