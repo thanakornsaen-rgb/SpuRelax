@@ -718,17 +718,20 @@ footer {
   box-shadow: 0 8px 24px rgba(26,79,160,0.25);
   position: relative;
 }
-.team-avatar-num {
-  position: absolute;
-  bottom: -4px; right: -4px;
-  width: 28px; height: 28px;
-  background: var(--accent);
-  border-radius: 50%;
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  display: flex; align-items: center; justify-content: center;
-  border: 2px solid #fff;
+.team-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;     /* ทำให้เป็นวงกลม */
+  overflow: hidden;       /* ตัดส่วนเกินออก */
+  position: relative;
+  margin: auto;
+  border: 4px solid rgba(228, 228, 214, 0.326); /* ขอบแบบในรูป */
+}
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* ครอปให้เต็มวง */
+  display: block;
 }
 .team-name { font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
 .team-id { color: var(--muted); font-size: 0.9rem; margin-bottom: 10px; }
